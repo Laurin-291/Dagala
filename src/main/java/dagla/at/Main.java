@@ -13,7 +13,7 @@ public class Main {
             System.out.println("i = " + i);
         }
     }
-    public int otto(){
-        return 1;
+   // public int otto(){
+       // return 1;
     }
 }
