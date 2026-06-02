@@ -52,6 +52,30 @@ public class BoardTest {
                 "Ungültige Koordinaten dürfen keine Exception auslösen.");
     }
 
+    // ==========================================
+    // Tests für: isFull()
+    // ==========================================
+
+    @Test
+    void testIsFull_Positive() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board.place(i, j, 'X');
+            }
+        }
+        assertTrue(board.isFull(), "Wenn alle 9 Felder belegt sind, muss isFull() true sein.");
+    }
+
+    @Test
+    void testIsFull_Negative_NotFull() {
+        assertFalse(board.isFull(), "Ein komplett leeres Board ist nicht voll.");
+        board.place(0, 0, 'X');
+        assertFalse(board.isFull(), "Ein nur teilweise belegtes Board ist nicht voll.");
+    }
+
+    // ==========================================
+    // Tests für: clear()
+    // ==========================================
 
     @Test
     void testClear_Positive() {

@@ -1,6 +1,5 @@
 package dagla.at;
 
-
 import java.util.Scanner;
 
 public class TicTacToe {
