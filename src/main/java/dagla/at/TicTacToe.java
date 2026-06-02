@@ -1,6 +1,10 @@
 package dagla.at;
 
 import java.util.Scanner;
+import dagla.at.Board;
+import dagla.at.Player;
+
+import java.util.Scanner;
 
 public class TicTacToe {
     private Player player1;
@@ -57,7 +61,7 @@ public class TicTacToe {
         }
     }
 
-    public void switchCurrentPlayer() {
+    private void switchCurrentPlayer() {
         if (currentPlayer == player1) {
             currentPlayer = player2;
         } else {
@@ -65,13 +69,15 @@ public class TicTacToe {
         }
     }
 
-    public boolean hasWinner() {
+    private boolean hasWinner() {
+        // Logik zur Überprüfung von Reihen, Spalten und Diagonalen
+        // (Im Diagramm als private Methode definiert)
         return false;
     }
 
+    // HIER IST DER EINSTIEGSPUNKT (Main-Methode) zum Starten:
     public static void main(String[] args) {
         TicTacToe game = new TicTacToe();
         game.start();
     }
 }
-
