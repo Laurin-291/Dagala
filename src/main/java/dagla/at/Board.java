@@ -48,4 +48,7 @@ public class Board {
             System.out.println("-------------");
         }
     }
+    public boolean isFull() {
+        return false;
+    }
 }
