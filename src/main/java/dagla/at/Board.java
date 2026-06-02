@@ -5,7 +5,7 @@ public class Board {
 
     public Board() {
         cells = new char[3][3];
-        clear();
+        clear(); // Initialisiert das Board mit leeren Zeichen
     }
 
     // FÜR US-03: Prüft präzise, ob ein Feld frei UND innerhalb des Rasters (0-2) ist
@@ -16,10 +16,20 @@ public class Board {
         return cells[x][y] == ' ' || cells[x][y] == '\u0000';
     }
 
+    // Speichert den Marker im 3x3-Array
     public void place(int x, int y, char marker) {
         if (x >= 0 && x <= 2 && y >= 0 && y <= 2) {
             cells[x][y] = marker;
         }
+    }
+
+    public boolean isFull() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (isCellEmpty(i, j)) return false;
+            }
+        }
+        return true;
     }
 
     public void clear() {
@@ -30,6 +40,8 @@ public class Board {
         }
     }
 
+
+    // NEU FÜR US-02: Gibt das Spielfeld formatiert in der Konsole aus
     public char[][] getCells() {
         return cells;
     }
@@ -46,7 +58,4 @@ public class Board {
         }
     }
 
-    public boolean isFull() {
-        return false;
-    }
 }
