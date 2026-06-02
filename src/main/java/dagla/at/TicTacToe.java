@@ -1,6 +1,8 @@
 package dagla.at;
 
 
+import java.util.Scanner;
+
 public class TicTacToe {
     private Player player1;
     private Player player2;
@@ -33,9 +35,6 @@ public class TicTacToe {
         return false;
     }
 
-
     public static void main(String[] args) {
-
-
     }
-    }
+}
