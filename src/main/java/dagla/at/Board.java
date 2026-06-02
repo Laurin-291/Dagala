@@ -8,7 +8,7 @@ public class Board {
         clear();
     }
 
-    // Prüft, ob Koordinaten im Raster liegen und der Platz frei (' ') ist
+    // Prüft, ob Koordinaten im Raster liegen und die Zelle leer ist
     public boolean isCellEmpty(int x, int y) {
         if (x < 0 || x > 2 || y < 0 || y > 2) {
             return false;
@@ -18,7 +18,7 @@ public class Board {
 
     // Speichert den Marker im 3x3-Array
     public void place(int x, int y, char marker) {
-        if (x >= 0 && x <= 2 && y >= 0 && y <= 2) {
+        if (isCellEmpty(x, y)) {
             cells[x][y] = marker;
         }
     }
@@ -31,15 +31,21 @@ public class Board {
         }
     }
 
+
+    // NEU FÜR US-02: Gibt das Spielfeld formatiert in der Konsole aus
     public char[][] getCells() {
         return cells;
     }
 
     public void print() {
-        // Wird in US-02 eingebaut
-    }
-
-    public boolean isFull() {
-        return false; // Wird in US-03 eingebaut
+        System.out.println("-------------");
+        for (int i = 0; i < 3; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(cells[i][j] + " | ");
+            }
+            System.out.println();
+            System.out.println("-------------");
+        }
     }
 }

@@ -1,5 +1,6 @@
 package dagla.at;
 
+import java.util.Scanner;
 import dagla.at.Board;
 import dagla.at.Player;
 
@@ -21,7 +22,11 @@ public class TicTacToe {
     }
 
     public void start() {
-        System.out.println("--- TicTacToe Spielzug-Test (US-01) ---");
+        System.out.println("--- TicTacToe Spielfeld-Ansicht (US-02) ---");
+
+        // NEU FÜR US-02: Zeigt das leere Board direkt zum Start an
+        board.print();
+
         System.out.println("Current Player: " + currentPlayer.getMarker());
 
         int row = -1;
@@ -42,7 +47,11 @@ public class TicTacToe {
                 if (board.isCellEmpty(row, col)) {
                     board.place(row, col, currentPlayer.getMarker());
                     validMove = true;
-                    System.out.println("Zug erfolgreich registriert auf Feld [" + inputRow + "][" + inputCol + "]!");
+                    System.out.println("Zug erfolgreich registriert!");
+
+                    // NEU FÜR US-02: Zeigt das aktualisierte Board nach dem Zug an
+                    board.print();
+
                 } else {
                     System.out.println("Ungültiger Zug! Das Feld ist besetzt oder außerhalb des Rasters (1-3). Versuche es erneut.");
                 }
@@ -52,7 +61,7 @@ public class TicTacToe {
         }
     }
 
-    public void switchCurrentPlayer() {
+    private void switchCurrentPlayer() {
         if (currentPlayer == player1) {
             currentPlayer = player2;
         } else {
@@ -60,7 +69,9 @@ public class TicTacToe {
         }
     }
 
-    public boolean hasWinner() {
+    private boolean hasWinner() {
+        // Logik zur Überprüfung von Reihen, Spalten und Diagonalen
+        // (Im Diagramm als private Methode definiert)
         return false;
     }
 

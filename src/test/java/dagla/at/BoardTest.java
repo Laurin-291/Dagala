@@ -34,4 +34,31 @@ public class BoardTest {
         board.place(0, 2, 'O');
         assertEquals('O', board.getCells()[0][2], "Der Marker 'O' muss korrekt im Array liegen.");
     }
+
+    // =========================================================================
+    // NEUE TESTS FÜR US-02: Spielstatus / Spielfeld zurücksetzen & Dimensionen
+    // =========================================================================
+
+    @Test
+    void testClearBoard_Positive() {
+        // POSITIVTEST: Board befüllen und leeren. Danach müssen alle Felder wieder ' ' sein.
+        board.place(0, 0, 'X');
+        board.place(2, 2, 'O');
+
+        board.clear();
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                assertEquals(' ', board.getCells()[i][j], "Nach clear() müssen alle Felder leer sein.");
+            }
+        }
+    }
+
+    @Test
+    void testBoardDimensions_Positive() {
+        // POSITIVTEST: Prüft, ob das Array exakt die Spielfeldgröße 3x3 besitzt
+        char[][] cells = board.getCells();
+        assertEquals(3, cells.length, "Das Spielfeld muss 3 Zeilen haben.");
+        assertEquals(3, cells[0].length, "Das Spielfeld muss 3 Spalten haben.");
+    }
 }
