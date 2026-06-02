@@ -5,26 +5,20 @@ public class Board {
 
     public Board() {
         cells = new char[3][3];
-        clear(); // Initialisiert das Board mit leeren Zeichen
+        clear();
     }
 
     public boolean isCellEmpty(int x, int y) {
+        if (x < 0 || x > 2 || y < 0 || y > 2) {
+            return false;
+        }
         return cells[x][y] == ' ' || cells[x][y] == '\u0000';
     }
 
     public void place(int x, int y, char marker) {
-        if (isCellEmpty(x, y)) {
+        if (x >= 0 && x <= 2 && y >= 0 && y <= 2) {
             cells[x][y] = marker;
         }
-    }
-
-    public boolean isFull() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (isCellEmpty(i, j)) return false;
-            }
-        }
-        return true;
     }
 
     public void clear() {
@@ -35,12 +29,24 @@ public class Board {
         }
     }
 
+    public char[][] getCells() {
+        return cells;
+    }
+
+    // NEU FÜR US-02: Gibt das Spielfeld formatiert in der Konsole aus
     public void print() {
+        System.out.println("-------------");
         for (int i = 0; i < 3; i++) {
+            System.out.print("| ");
             for (int j = 0; j < 3; j++) {
-                System.out.print("[" + cells[i][j] + "]");
+                System.out.print(cells[i][j] + " | ");
             }
             System.out.println();
+            System.out.println("-------------");
         }
+    }
+
+    public boolean isFull() {
+        return false; // Wird in US-03 ausgebaut
     }
 }
