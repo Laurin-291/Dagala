@@ -5,26 +5,22 @@ public class Board {
 
     public Board() {
         cells = new char[3][3];
-        clear(); // Initialisiert das Board mit leeren Zeichen
+        clear();
     }
 
+    // Prüft, ob Koordinaten im Raster liegen und der Platz frei (' ') ist
     public boolean isCellEmpty(int x, int y) {
+        if (x < 0 || x > 2 || y < 0 || y > 2) {
+            return false;
+        }
         return cells[x][y] == ' ' || cells[x][y] == '\u0000';
     }
 
+    // Speichert den Marker im 3x3-Array
     public void place(int x, int y, char marker) {
-        if (isCellEmpty(x, y)) {
+        if (x >= 0 && x <= 2 && y >= 0 && y <= 2) {
             cells[x][y] = marker;
         }
-    }
-
-    public boolean isFull() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (isCellEmpty(i, j)) return false;
-            }
-        }
-        return true;
     }
 
     public void clear() {
@@ -35,12 +31,15 @@ public class Board {
         }
     }
 
+    public char[][] getCells() {
+        return cells;
+    }
+
     public void print() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.print("[" + cells[i][j] + "]");
-            }
-            System.out.println();
-        }
+        // Wird in US-02 eingebaut
+    }
+
+    public boolean isFull() {
+        return false; // Wird in US-03 eingebaut
     }
 }
